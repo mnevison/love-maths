@@ -8,23 +8,16 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       if (this.getAttribute("data-type") === "submit") {
         checkAnswer();
-      } else if (this.getAttribute("data-type") === "division") {
-        let divisionMessage = document.getElementById("division-message");
-        divisionMessage.textContent = "Answers are rounded down to the nearest whole number.";
-        runGame("division");
       } else {
-        let divisionMessage = document.getElementById("division-message");
-        if (divisionMessage) {
-          divisionMessage.textContent = "";
-        }
-        let gameType = this.getAttribute("data-type");
-        runGame(gameType);
       }
+      let gameType = this.getAttribute("data-type");
+      runGame(gameType);
     });
   }
 
-  document.getElementById("answer-box").addEventListener("keydown",
-    function (event) {
+  document
+    .getElementById("answer-box")
+    .addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         checkAnswer();
       }
@@ -44,11 +37,13 @@ function runGame(gameType) {
 
   let num1 = Math.floor(Math.random() * 25) + 1;
   let num2 = Math.floor(Math.random() * 25) + 1;
-  
-  let num4 = Math.floor(Math.random() * 9) + 1;
-  let num3 = num4 * Math.floor(Math.random() * 10) + 1;
 
+  let num3, num4;
 
+  do {
+    num3 = Math.floor(Math.random() * 25) + 1;
+    num4 = Math.floor(Math.random() * 10) + 1;
+  } while (num3 % num4 !== 0 || num3 === num4 || num3 < num4);
 
   if (gameType === "addition") {
     displayAdditionQuestion(num1, num2);
