@@ -41,8 +41,8 @@ const runGame = (gameType) => {
   let num3, num4;
 
   do {
-    num3 = Math.floor(Math.random() * 25) + 1;
-    num4 = Math.floor(Math.random() * 10) + 1;
+    num3 = Math.floor(Math.random() * 100) + 1;
+    num4 = Math.floor(Math.random() * 40) + 1;
   } while (num3 % num4 !== 0 || num3 === num4 || num3 < num4);
 
   if (gameType === "addition") {
