@@ -1,11 +1,11 @@
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   let buttons = document.getElementsByTagName("button");
 
   for (let button of buttons) {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", function () {
       if (this.getAttribute("data-type") === "submit") {
         checkAnswer();
       } else {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * and after the users answer has been processed
  */
 
-const runGame = gameType => {
+const runGame = (gameType) => {
   document.getElementById("answer-box").value = "";
   document.getElementById("answer-box").focus();
 
