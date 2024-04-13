@@ -8,7 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       if (this.getAttribute("data-type") === "submit") {
         checkAnswer();
+      } else if (this.getAttribute("data-type") === "division") {
+        let divisionMessage = document.getElementById("division-message");
+        divisionMessage.textContent = "Answers are rounded down to the nearest whole number.";
+        runGame("division");
       } else {
+        let divisionMessage = document.getElementById("division-message");
+        if (divisionMessage) {
+          divisionMessage.textContent = "";
+        }
         let gameType = this.getAttribute("data-type");
         runGame(gameType);
       }
